@@ -1,0 +1,83 @@
+<%- include('../components/header.ejs') %>
+
+<main class="flex flex-col flex-1 items-center justify-center py-8 bg-gray-50">
+    <form enctype="multipart/form-data" class="w-full block mx-auto max-w-screen-lg px-8 flex gap-8" action="/novels/create" method="post">
+        <div class="basis-1/3">
+            <div class="aspect-[3/4] bg-white rounded ring-1 ring-slate-200 overflow-hidden flex flex-column justify-center items-center ">
+                <img class="preview-img w-full h-full object-cover block bg-cover bg-center" src="/abcd" alt="cover-image">
+<!--                <div class="info text-center"><span class="mb-6 inline-block text-2xl bg-slate-200 px-2 py-2 rounded-full">➕</span><p>Select or drag-->
+<!--                        <br> cover image</p></div>-->
+            </div>
+            <div class="mt-6">
+                <input required name="cover_image" class="cover-input block w-full flex rounded ring-1 ring-slate-200 bg-white py-2 file:bg-transparent file:w-full file:border-none" type="file" id="cover" name="cover" accept="image/*">
+            </div>
+            <script>
+
+
+                document.querySelector('.cover-input').addEventListener("change", function(event) {
+
+                    let input = event.target;
+                    let file = input.files[0];
+                    let type = file.type;
+
+                    console.log(file)
+
+                    let output = document.querySelector('.preview-img');
+
+
+                    output.src = URL.createObjectURL(event.target.files[0]);
+                    output.onload = function() {
+                        URL.revokeObjectURL(output.src) // free memory
+                    }
+                });
+
+            </script>
+        </div>
+        <div class="basis-2/3">
+            <div class="bg-white p-8 rounded ring-1 ring-slate-200">
+                <div class="mb-6">
+                    <label class="block text-lg font-bold text-slate-800" for="title">Title</label>
+                    <input placeholder="Untitled" class="block w-full bg-white ring-1 shadow-sm ring-slate-200 text-slate-900 px-3 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-pink-400" required name="title" type="text" id="title">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-lg font-bold text-slate-800" for="description">Description</label>
+                    <textarea placeholder="Type your text here..." class="resize-none block w-full bg-white ring-1 shadow-sm ring-slate-200 text-slate-900 px-3 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-pink-400" rows="7" required name="description" type="text" id="description"></textarea>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-lg font-bold text-slate-800" for="genre">Genre</label>
+                    <select required name="genre" id="genre" class="block w-full bg-white ring-1 shadow-sm ring-slate-200 text-slate-900 px-3 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        <option value="">Select</option>
+                        <option value="action">Action</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="romance">Romance</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="horror">Horror</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="sci-fi">Sci-Fi</option>
+                        <option value="historical">Historical</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="poetry">Poetry</option>
+                    </select>
+                </div>
+                <div class="mt-8">
+                    <input id="agree" type="checkbox" name="agree" required>
+                    <label class="text-sm" for="agree">
+                        I agree to Novellery's
+                        <a class="hover:text-pink-500 underline" href="/terms-of-use">Terms of Use</a> &
+                        <a class="hover:text-pink-500 underline" href="/privacy-policy">Privacy Policy</a>
+                    </label>
+                </div>
+                <div class="mt-2">
+                    <input id="mature" type="checkbox" name="mature">
+                    <label class="text-sm" for="mature">Please check here if this series contains mature themes or situations</label>
+                </div>
+                <div class="mt-8">
+                    <button class="block text-lg text-white px-6 py-2 rounded-full bg-pink-500 hover:bg-pink-700" type="submit">Create Novel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
+
+<%- include('../components/footer.ejs') %>

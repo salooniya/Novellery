@@ -1,0 +1,21 @@
+<%- include('../components/header.ejs') %>
+
+<main>
+    <form class="auth" method="post" action="/log-in">
+        <h1>LOG IN</h1>
+        <div>
+            <label for="email">Email</label>
+            <input required name="email" type="email" id="email">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input required name="password" type="password" id="password">
+        </div>
+        <button type="submit">Log In</button>
+        <p>
+            <a href="/forgot-password">Forgot Password?</a>
+        </p>
+    </form>
+</main>
+
+<%- include('../components/footer.ejs') %>

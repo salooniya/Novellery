@@ -1,0 +1,26 @@
+<%- include('../components/header.ejs') %>
+
+<main class="flex flex-col flex-1 items-center justify-center py-8 bg-gray-50">
+    <form class="w-full blockmx-auto max-w-screen-lg px-8 gap-8" action="/novels/<%= novelID %>/chapters/create" method="post">
+        <div class="bg-white p-8 rounded ring-1 ring-slate-200">
+            <div class="mb-6">
+                <label class="block text-lg font-bold text-slate-800" for="title">Chapter Title</label>
+                <input class="block w-full bg-white ring-1 shadow-sm ring-slate-200 text-slate-900 px-3 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                       required name="title" type="text" id="chapter_title" placeholder="Untitled">
+            </div>
+            <div class="mb-6">
+                <label class="block text-lg font-bold text-slate-800" for="content">Content</label>
+                <textarea
+                        class="resize-none block w-full bg-white ring-1 shadow-sm ring-slate-200 text-slate-900 px-3 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                        rows="17" required name="content" type="text" id="description" placeholder="Type your text here..."></textarea>
+            </div>
+            <div class="mt-8">
+                <button class="block text-lg text-white px-6 py-2 rounded-full bg-pink-500 hover:bg-pink-700"
+                        type="submit">Create Chapter
+                </button>
+            </div>
+        </div>
+    </form>
+</main>
+
+<%- include('../components/footer.ejs') %>

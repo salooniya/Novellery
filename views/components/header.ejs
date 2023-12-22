@@ -1,0 +1,31 @@
+<% if (user) { %>
+
+    <header>
+        <nav>
+            <div class="brand">
+                <a href="/">NOVELLERY</a>
+            </div>
+            <div class="links">
+                <a href="/user">Hi, <%= user.full_name %>!</a>
+                <a href="/novels/create">Create Novel</a>
+                <a href="/novels/123/chapters/create">Create Chapter</a>
+                <a href="/log-out">Log Out</a>
+            </div>
+        </nav>
+    </header>
+
+<% } else { %>
+
+    <header>
+        <nav>
+            <div class="brand">
+                <a href="/">NOVELLERY</a>
+            </div>
+            <div class="links">
+                <a href="/log-in">Log In</a>
+                <a href="/sign-up">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+<% } %>
