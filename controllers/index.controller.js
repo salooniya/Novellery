@@ -77,7 +77,8 @@ exports.novelPage = {
     get: async (req, res) => {
         try {
             const novel = await Novel.findById(req.params.novelID);
-            console.log(novel)
+            const chapters = await Chapter.find({ novelID: novel._id });
+            novel.chapters = [...chapters];
             req.data.novel = novel;
             res.render('pages/novel', req.data);
         } catch (e) {
@@ -119,10 +120,8 @@ exports.createChapterPage = {
         try {
             req.data.novelID = req.params.novelID;
             req.body.novelID = req.data.novelID;
-            const chapter = await Chapter.create(req.body);
-            console.log(chapter);
-            // res.redirect(`/novels/${req.params.novelID}`);
-            res.render('pages/create-chapter', req.data);
+            await Chapter.create(req.body);
+            res.redirect(`/novels/${req.params.novelID}`);
         } catch (e) {
             console.log(e);
             res.render('pages/create-chapter', req.data);

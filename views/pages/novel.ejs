@@ -30,10 +30,10 @@
     <div class="mx-auto max-w-screen-md px-8 gap-8">
         <h2 class="mt-12 mb-12 font-display font-bold text-3xl text-slate-800 text-center">Chapters</h2>
         <% novel.chapters.forEach(function(chapter){ %>
-            <div class="mb-6 rounded-full ring-1 ring-slate-200 px-4 py-2 flex items-center">
-                <span class="mr-auto text-gray-700">Chapter #1</span>
-                <span class="text-slate-400">Nov 24, 2023</span>
-            </div>
+            <a href="/novels/<%= novel._id %>/chapters/<%= chapter._id %>" class="mb-6 block rounded-full ring-1 ring-slate-200 px-4 py-2 flex items-center">
+                <span class="mr-auto text-gray-700"><%= chapter.title %></span>
+                <span class="text-slate-400">Dec 12, 2023</span>
+            </a>
         <% }); %>
     </div>
 </section>
